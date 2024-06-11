@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { connectDB } from "./config/db.js"
+import foodRouter from "./routes/foodRoute.js"
 
 // App Config 
 
@@ -14,14 +15,19 @@ app.use(cors())
 
 // db connection 
 
-connectDB();
+connectDB()
+
+
+// api endpoint
+
+app.use("/api/food",foodRouter)
+
 
 app.get("/",(req,res) => {
-    res.send("Hello World")
+    res.send("Hello World Hi")
 })
 
 app.listen(port,() => {
     console.log(`Server is running on port ${port}`)
 })
 
-//mongodb+srv://anantsaxena5454:LyhR-cj!PK86Pix@cluster0.k1cjcl4.mongodb.net/?
