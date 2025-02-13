@@ -3,13 +3,13 @@ import cors from "cors"
 import { connectDB } from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
 import userRouter from "./routes/userRoute.js"
-import 'dotenv/config'
+import dotenv from "dotenv";
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+dotenv.config();
 // App Config 
 
 const app = express()
-const port = 4000
 
 //middleware
 
@@ -33,7 +33,7 @@ app.get("/",(req,res) => {
     res.send("Hello World Hi")
 })
 
-app.listen(port,() => {
-    console.log(`Server is running on port ${port}`)
+app.listen(process.env.PORT,() => {
+    console.log(`Server is running on port ${process.env.PORT}`)
 })
 
